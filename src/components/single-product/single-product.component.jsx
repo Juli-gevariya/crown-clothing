@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProductItem = (props) =>  {
-    console.log(props);
     return(
         <div className="product-item" id={props.product_list.ID}>
             <div className="content">

@@ -12,7 +12,7 @@ const HeaderMenu = () => {
             <div className="options">
                 <Link className="option" to ='/shop'>Shop</Link>
                 <Link className="option" to ='/cart'>Cart</Link>
-                <Link className="option" to ='/contact'>Contact</Link>
+                <Link className="option" to ='/sign-in-and-sign-up'>Sign In and Sign Up</Link>
             </div>
         </div>
     )
