@@ -1,28 +1,44 @@
 import React from "react";
-// import {useState,useEffect} from 'react';
+import {useState,useEffect} from 'react';
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import {signInWithGoogle} from '../../firebase/firebase.utils';
+import './sign-in.styles.scss';
 
-const signInForm = () => {
-    // const [email,setEmail] = useState('');
-    // const [passward,setPassward] = useState('');
+const SignInForm = () => {
+    const [userdata,setUserdata] = useState({
+        'email' : '',
+        'password' : ''
+    });
 
     // useEffect(() => {   
-    //     setEmail(newfilterdDrinks);
-    // },[email,passward]);
+    //     setUserdata();
+    // },[userdata.email,userdata.password]);
 
-    // const {email,passward} = "";
+    const handleChange = e => {
+        setUserdata({...userdata, [e.target.name]: e.target.value})
+    }
+
+    const handleSubmit = event => {
+        event.preventdefault();
+        setUserdata();
+    }
+
+    // console.log(userdata);
+    // const {email,password} = ""; 
 
     return(
         <div className="sign-in">
             <h1>I am Already Sign Up</h1>
-            <span>Please Enter Valid Email and Passward</span>
-
-            {/* <form>
-                <input type='email' name="email"  />
-                <input type='passward' name="passward" />
-                <input type='submit' name="submit" value='Submit Form' />
-            </form> */}
+            <span>Please Enter Valid Email and password</span>
+            <form onSubmit={handleSubmit}>
+                <FormInput type='email' name="email" value={userdata.email} handleChange={handleChange} label='Email' required />
+                <FormInput type='password' name="password" value={userdata.password} handleChange={handleChange} label='Password' required/>
+                <CustomButton type='submit'>Sign In</CustomButton>
+                <CustomButton onClick={signInWithGoogle}>Sign In With Google</CustomButton>
+            </form>
         </div>
     )
 }
 
-export default signInForm;
+export default SignInForm;
